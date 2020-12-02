@@ -1,0 +1,116 @@
+<!-- this is the form for the trainee -->
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- https://code.jquery.com/ -->
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<!--older versions of jquery-->
+<!-- <script   src="https://code.jquery.com/jquery-2.2.4.js"   
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   
+            crossorigin="anonymous"></script> -->
+<!--latest version 1-->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+crossorigin="anonymous"></script>
+<link rel="stylesheet" href="styles/main.css"/>
+<title>Register Alpha</title>
+</head>
+
+<body>
+    <div class="container">
+        
+        <div class="page-header">
+          <h1>E-Feedback Form <small>Register of Completed Forms</small></h1>
+        </div>
+        <!-- <p>This form needs to release unmanaged resources</p> -->
+        <!-- PUT ALL THIS IN A FORM-->
+        <!-- <form id="feedbackForm" action="../ajax_example/BasicAjaxSubmit.php" method="post"> -->
+        <form id="roomSelectorForm" method="post">
+
+        <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%% details %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Room selector</h3>  
+            </div>
+            <div class="panel-body" id="sectionZero">
+
+            <!-- drop down for rooms  -->
+                <select class="form-control dropDowns" name="room" id="roomDropDown">
+                    <option selected disabled>Choose Room</option>
+                </select>
+            <!-- end of drop down for rooms -->
+            <br/>
+            <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Submit &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+            <button class="btn btn-submit" type="submit" name="submit">Submit</button><br/><br/>
+            <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ End of Submit $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+            
+            <!--end of panel body-->
+            </div>
+            
+        <!--end of panel-->
+        </div>
+        <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% end of details %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+        </form>
+        <!-- ############################total ################################################### -->
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Total forms</h3> 
+            </div>
+            <div class="panel-body" id="sectionOne">
+                <p ><span>Total: </span><span id="totalCount"></span></p>
+
+            <!-- end of panel body-->
+            </div>
+        <!--end of panel-->
+        </div>
+<!-- ############################End total ################################################### -->
+
+
+        <!-- ############################ forms completed ################################################### -->
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Forms completed</h3> 
+            </div>
+            <div class="panel-body" id="sectionOne">
+
+                <ol id="returnedFormsList">
+
+                </ol>
+            <!-- end of panel body-->
+            </div>
+        <!--end of panel-->
+        </div>
+<!-- ############################End forms completed ################################################### -->
+
+<a href="/index.html">Back to portfolio index</a>
+    <!--end of container-->
+    </div>
+       
+
+    <!-- scripts -->
+    <script src="scripts/readDropdowns.js"></script>
+    <script src="scripts/sendRoom.js"></script>
+    <!-- <script src="scripts/getFormData.js"></script> -->
+</body>
+</html>
