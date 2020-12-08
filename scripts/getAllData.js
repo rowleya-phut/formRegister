@@ -5,14 +5,9 @@ $( document ).ready(function() {
     .done(function(returnedData){
       var result = $.parseJSON(returnedData);
       console.log(result);
+      //show as latest form filled in at the top of the page
+      result.reverse();
 
-        // $.each(result, function(index, value){
-        //     //build an option element string for each object in the returned JSON
-        //     string += "<tr>" ;
-        //     string += '<td>' + value['EvaluationId']+'</td>';
-        //     string += '<td>' + index[1] + value['Free_Comment'] + '</td>';
-        //     string += "</tr>";
-        // });
         $.each(result, function(key, value){
             var string = "<br/>";
             string += "<table  class='table table-bordered'>";
