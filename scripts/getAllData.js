@@ -21,6 +21,9 @@ $( document ).ready(function() {
             string += "<th>Form Contents</th>";
             string += "</tr>";
             $.each(value, function(key, value){
+                if(key === "Time_accessed"){
+                    value = convertUnix(value);
+                }
                 string += "<tr>" ;
                 string += '<td>' + key +'</td>';
                 string += '<td>' + value + '</td>';
