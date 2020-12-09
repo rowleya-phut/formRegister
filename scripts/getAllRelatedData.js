@@ -2,7 +2,7 @@ $( document ).ready(function() {
     console.log( "ready to read ALL data!" );
 
     let evaluationId = 0;
-
+    let string = "";
     /////////////////staff rooms ajax call//////////////////////////
     $.ajax({method: "POST", url: "php/getAllDataRaw.php"})
     .done(function(returnedData){
@@ -12,7 +12,7 @@ $( document ).ready(function() {
       result.reverse();
 
         $.each(result, function(key, value){
-            var string = "<br/>";
+            string += "<br/>";
             string += "<table  class='table table-bordered'>";
             string += "<tr>";
             string += "<th>Form Key</th>";
@@ -33,23 +33,31 @@ $( document ).ready(function() {
             });
             string += "<tr>" ;
             string += '<td>Trainer Impact</td>';
+            string += '<td>';
+            let ulId = "trainImpact"+ evaluationId;
+            string += '<ul id="'+ulId+'">';
             //ajax request to get trainer impact related data
             $.ajax({method: "POST", url: "php/getRelatedTrainerImpact.php", data: {"EVALID": evaluationId}})
             .done(function(returnedImpactData){
                 var impactDataResult = $.parseJSON(returnedImpactData);
-                string += "<ul>"
+                console.log(impactDataResult);
+                
                 $.each(impactDataResult, function(key, value){
-                    string += "<li>";
-                    string += value;
-                    string += "</li>";
+                    $.each(value, function(key, value){
+                        if(key === "ImpactDesc"){
+                            string += "<li>" + value + "</li>"; 
+                        }
+                            
+                    });
+                    let appendList = "#"+ulId;
+                    $(string).appendTo(appendList);
+                    string = "";
                 });
-                string += "</ul>";
+                
             });
-            ///////////////////////////////////////////////////
-
-
-            
-            string += '<td>' + value + '</td>';
+            string += "</ul>";
+            ///////////////////////////////////////////////////evaluationId
+            string += '</td>';
             string += "</tr>"; 
             string += "</table>";
                     //attach the built string to the element on the html      

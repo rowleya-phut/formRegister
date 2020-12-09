@@ -8,25 +8,27 @@ $user=$database['user'];
 $password=$database['password'];
 $dbName =$database['dbName'];
 
-$EVALID = $_POST["EVALID"];
- 
+//$EVAL = 1606914474;
+$EVAL = $_POST['EVALID'];
+
 try {
-    //create a PDO connection object
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
-    //prepare a pdo statement to call a stored statement which is stored on the db under 'routines' (see on PHPMyAdmin)
+    // execute the stored procedure
+    //$sql = 'CALL GetTrainerImpactRelated(1606914474)';
+
     $statement = $pdo->prepare('CALL GetTrainerImpactRelated(?)');
     //execute with variable values
-    $statement->execute([$room, $registerTimeMinus, $registerTime]);
+    $statement->execute([$EVAL]);
 
 } catch (PDOException $e) {
-    die("Error occurred:" . $e->getMessage());
+    die("Error occurred:" . $e->getMessage());  
     echo "Failed";
 }
 
-while ($r = $q -> fetch()){
-    $dbdata[]=$r;
-    
+while ($r = $statement -> fetch()){
+    $dbdata[]=$r;    
 }
+//return data to getFormData.js
 echo json_encode($dbdata);
 
 ?>
