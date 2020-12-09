@@ -11,11 +11,7 @@ $dbName =$database['dbName'];
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
     // execute the stored procedure
-    $sql = '
-    SELECT evaluation_tbl.EvaluationId, eval_impact_trainer_tbl.ImpactId FROM evaluation_tbl
-    INNER JOIN eval_impact_trainer_tbl
-    ON eval_impact_trainer_tbl.EvaluationId = evaluation_tbl.EvaluationId
-    ';
+    $sql = 'CALL GetTrainerImpactRelated()';
     // call the stored procedure
     $q = $pdo->query($sql);
     $q->setFetchMode(PDO::FETCH_ASSOC);
