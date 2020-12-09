@@ -8,16 +8,13 @@ $user=$database['user'];
 $password=$database['password'];
 $dbName =$database['dbName'];
 
-$registerTime = time();
-// $registerTimeMinus = $registerTime - 86400; //day
-$registerTimeMinus = $registerTime - 3600; //hour
-
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
     // execute the stored procedure
     $sql = '
-        SELECT Evaluation_tbl.EvaluationId
-    
+    SELECT evaluation_tbl.EvaluationId, eval_impact_trainer_tbl.ImpactId FROM evaluation_tbl
+    INNER JOIN eval_impact_trainer_tbl
+    ON eval_impact_trainer_tbl.EvaluationId = evaluation_tbl.EvaluationId
     ';
     // call the stored procedure
     $q = $pdo->query($sql);
