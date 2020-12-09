@@ -7,7 +7,7 @@ $host=$database['host'];
 $user=$database['user'];
 $password=$database['password'];
 $dbName =$database['dbName'];
-
+ 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
     // execute the stored procedure
