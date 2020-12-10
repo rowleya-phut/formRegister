@@ -32,6 +32,7 @@ $( document ).ready(function() {
                 string += "</tr>";    
             });
             string += "<tr>" ;
+            //////////trainer impact section////////////////////////////
             string += '<td>Trainer Impact</td>';
             string += '<td>';
             let ulId = "trainImpact"+ evaluationId;
@@ -59,6 +60,7 @@ $( document ).ready(function() {
             ///////////////////////////////////////////////////evaluationId
             string += '</td>';
             string += "</tr>"; 
+            /////////end of trainer impact section/////////////////////////
             string += "</table>";
                     //attach the built string to the element on the html      
         $(string).appendTo('#dataDiv');
