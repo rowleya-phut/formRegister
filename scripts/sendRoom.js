@@ -52,7 +52,7 @@ $( document ).ready(function() {
             //dataType: 'json',
             })
             .done(function (data) { 
-                console.log('Submission successful');
+                console.log('Submission successful!');
                 //console.log(data);
                 var result = $.parseJSON(data);
                 //console.log(result[0].EvaluationId);

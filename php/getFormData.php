@@ -14,7 +14,7 @@ $registerTimeMinus = $registerTime - 3600; //hour
 $room = $_POST["room"];
 
 //see https://phpdelusions.net/pdo for the only reasonable information on this though it's still poor
-
+$dbdata = [];
 try {
     //create a PDO connection object
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
