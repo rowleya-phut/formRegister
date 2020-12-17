@@ -12,6 +12,9 @@ function ajaxRequest(fromDate, toDate, phpQueryURL){
     
             $.each(result, function(key, value){
                 string += "<br/>";
+                let formId = "collapsedForm"+key;
+                string += "<button type='button' class='btn btn-info' data-toggle='collapse' data-target='#"+formId+"'>Form "+ key +"</button>"
+                string += "<div class='collapse' id='"+formId+"'>"
                 string += "<table  class='table table-bordered'>";
                 string += "<tr>";
                 string += "<th>Form Key</th>";
@@ -92,6 +95,8 @@ function ajaxRequest(fromDate, toDate, phpQueryURL){
                 /////////end of trainer impact section/////////////////////////
 
                 string += "</table>";
+                string += "</div>";
+                string += "<br/>";
                         //attach the built string to the element on the html      
             $(string).appendTo('#dataDiv');
             string = "";
