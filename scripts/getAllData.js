@@ -30,7 +30,6 @@ $( document ).ready(function() {
         string = "";
         });
 
-
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
       console.log("Read Error: " + errorThrown);

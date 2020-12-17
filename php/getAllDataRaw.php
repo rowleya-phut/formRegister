@@ -16,8 +16,6 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
     // execute the stored procedure
     $sql = 'CALL GetAllData()';
-    // $sql = 'CALL GetRoomData("E371")';
-    // $sql = 'CALL GetRecentRoomData("E371")';
     // call the stored procedure
     $q = $pdo->query($sql);
     $q->setFetchMode(PDO::FETCH_ASSOC);

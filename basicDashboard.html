@@ -32,24 +32,32 @@ crossorigin="anonymous">
 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
 crossorigin="anonymous"></script>
 <link rel="stylesheet" href="styles/main.css"/>
+<!-- jquery UI css CDN -->
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="styles/datepicker.css"/> -->
 <title>basic-dashboard</title>
 </head>
 
+<!-- jquery UI CDN -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
 <body>
     <div class="container">
+
+      <p>Date from: <input type="text" id="datepickerFrom"></p>
+      <p>Date to: <input type="text" id="datepickerTo"></p>
+      <button type="button" class="btn btn-default" id="dateButton">Submit</button>
         
-        <div id="dataDiv">
-
-        </div>
-
-
+        <div id="dataDiv"></div>
     <!--end of container-->
     </div>
        
 
     <!-- scripts -->
+    <script src="scripts/datePicker.js"></script>
     <script src="scripts/sharedFuncs.js"></script>
     <!-- <script src="scripts/getAllData.js"></script> -->
     <script src="scripts/getAllRelatedData.js"></script>
+
 </body>
 </html>

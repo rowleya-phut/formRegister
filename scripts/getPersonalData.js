@@ -7,7 +7,7 @@ $( document ).ready(function() {
     $.ajax({method: "POST", url: "php/getPersonalData.php"})
     .done(function(returnedData){
       var result = $.parseJSON(returnedData);
-      console.log(result);
+      //console.log(result);
       //show as latest form filled in at the top of the page
       result.reverse();
 
@@ -41,7 +41,7 @@ $( document ).ready(function() {
             $.ajax({method: "POST", url: "php/getRelatedTrainerImpact.php", data: {"EVALID": evaluationId}})
             .done(function(returnedImpactData){
                 var impactDataResult = $.parseJSON(returnedImpactData);
-                console.log(impactDataResult);
+                //console.log(impactDataResult);
                 
                 $.each(impactDataResult, function(key, value){
                     $.each(value, function(key, value){

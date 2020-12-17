@@ -1,13 +1,27 @@
 $( document ).ready(function() {
+
+    let fromDate = 0;
+    let toDate = 0;
+
+    $('#dateButton').click(function() {
+
+        $('#dataDiv').empty();
+
+        fromDate = $('#datepickerFrom').datepicker("getDate") / 1000;
+        toDate = $('#datepickerTo').datepicker("getDate") /1000; 
+        console.log(fromDate);
+        console.log(toDate);
+    
+
     console.log( "ready to read ALL data!" );
 
     let evaluationId = 0;
     let string = "";
     /////////////////staff rooms ajax call//////////////////////////
-    $.ajax({method: "POST", url: "php/getAllDataRaw.php"})
+    $.ajax({method: "POST", url: "php/getAllDataRawByDate.php", data:{dateFrom : fromDate, dateTo : toDate}})
     .done(function(returnedData){
       var result = $.parseJSON(returnedData);
-      console.log(result);
+      //console.log(result);
       //show as latest form filled in at the top of the page
       result.reverse();
 
@@ -41,7 +55,7 @@ $( document ).ready(function() {
             $.ajax({method: "POST", url: "php/getRelatedTrainerImpact.php", data: {"EVALID": evaluationId}})
             .done(function(returnedImpactData){
                 var impactDataResult = $.parseJSON(returnedImpactData);
-                console.log(impactDataResult);
+                //console.log(impactDataResult);
                 
                 $.each(impactDataResult, function(key, value){
                     $.each(value, function(key, value){
@@ -72,7 +86,8 @@ $( document ).ready(function() {
     .fail(function (jqXHR, textStatus, errorThrown) {
       console.log("Read Error: " + errorThrown);
     });
-
+    fromDate = 0;
+    toDate = 0;
     ///////////////////////////////////////////////////////////
-
+    });
 });
