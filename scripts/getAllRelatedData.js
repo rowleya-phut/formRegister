@@ -32,7 +32,7 @@ $( document ).ready(function() {
         toDate = $('#datepickerTo').datepicker("getDate") /1000; 
         // console.log(fromDate);
         // console.log(toDate);
-        console.log( "ready to read ALL data!" );
+        console.log( "ready to read PERSONAL data!" );
 
         ajaxRequest(fromDate, toDate, phpQueryURL);
 
