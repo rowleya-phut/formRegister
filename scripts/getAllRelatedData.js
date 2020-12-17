@@ -43,8 +43,9 @@ $( document ).ready(function() {
                       string += '<td>' + value + '</td>';
                       string += "</tr>";    
                   });
-                  string += "<tr>" ;
+                  
                   //////////trainer impact section////////////////////////////
+                  string += "<tr>" ;
                   string += '<td>Trainer Impact</td>';
                   string += '<td>';
                   let ulId = "trainImpact"+ evaluationId;
@@ -69,10 +70,40 @@ $( document ).ready(function() {
                       
                   });
                   string += "</ul>";
-                  ///////////////////////////////////////////////////evaluationId
                   string += '</td>';
                   string += "</tr>"; 
                   /////////end of trainer impact section/////////////////////////
+
+                  //////////trainer quality section////////////////////////////
+                  string += "<tr>" ;
+                  string += '<td>Trainer Quality</td>';
+                  string += '<td>';
+                  let ulIdQ = "trainQuality"+ evaluationId;
+                  string += '<ul id="'+ulIdQ+'">';
+                  //ajax request to get trainer impact related data
+                  $.ajax({method: "POST", url: "php/getRelatedTrainerQuality.php", data: {"EVALID": evaluationId}})
+                  .done(function(returnedQualityData){
+                      var qualityDataResult = $.parseJSON(returnedQualityData);
+                    //   console.log(qualityDataResult);
+                      
+                      $.each(qualityDataResult, function(key, value){
+                          $.each(value, function(key, value){
+                              if(key === "TrainerRatingDesc"){
+                                  string += "<li>" + value + "</li>"; 
+                              }
+                                  
+                          });
+                          let appendList = "#"+ulIdQ;
+                          $(string).appendTo(appendList);
+                          string = "";
+                      });
+                      
+                  });
+                  string += "</ul>";
+                  string += '</td>';
+                  string += "</tr>"; 
+                  /////////end of trainer impact section/////////////////////////
+
                   string += "</table>";
                           //attach the built string to the element on the html      
               $(string).appendTo('#dataDiv');
