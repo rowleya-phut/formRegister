@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
- 
+
 $database = include('config.php');
 
 $host=$database['host'];
@@ -27,19 +27,20 @@ try {
 
     $statement = $pdo->prepare('CALL GetAllDataByDate(?,?)');
     //execute with variable values
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
     $statement->execute([$dateFrom, $dateTo]);
 
 
 } catch (PDOException $e) {
-    die("Error occurred:" . $e->getMessage());  
+    die("Error occurred:" . $e->getMessage());
     echo "Failed";
 }
 
 while ($r = $statement -> fetch()){
-    $dbdata[]=$r;    
+    $dbdata[]=$r;
 }
 //return data to getFormData.js
 echo json_encode($dbdata);
-
+$dbdata = [];
 ?>
 
