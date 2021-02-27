@@ -17,13 +17,6 @@ $dateTo =  $_POST['dateTo'] + 24*60*60;  //add 24hours to cover the whole of tha
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
 
-    // // execute the stored procedure
-    // $sql = 'CALL GetPersonalData(1606780800, 1608249600)';
-    // // call the stored procedure
-    // $statement = $pdo->query($sql);
-    // $statement->setFetchMode(PDO::FETCH_ASSOC);
-
-
     // execute the stored procedure
     $statement = $pdo->prepare('CALL GetPersonalData(?,?)');
     //execute with variable values
